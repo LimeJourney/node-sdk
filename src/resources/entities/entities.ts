@@ -2,8 +2,8 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as EntitiesAPI from './entities';
 import * as EventsAPI from './events';
+import { EventListResponse, Events } from './events';
 
 export class Entities extends APIResource {
   events: EventsAPI.Events = new EventsAPI.Events(this._client);
@@ -145,14 +145,18 @@ export interface EntityCreateParams {
   external_id?: string;
 }
 
-export namespace Entities {
-  export import EntityData = EntitiesAPI.EntityData;
-  export import EntityWithSegments = EntitiesAPI.EntityWithSegments;
-  export import EntityWithSegmentsArray = EntitiesAPI.EntityWithSegmentsArray;
-  export import EntityCreateResponse = EntitiesAPI.EntityCreateResponse;
-  export import EntityRetrieveResponse = EntitiesAPI.EntityRetrieveResponse;
-  export import EntityListResponse = EntitiesAPI.EntityListResponse;
-  export import EntityCreateParams = EntitiesAPI.EntityCreateParams;
-  export import Events = EventsAPI.Events;
-  export import EventListResponse = EventsAPI.EventListResponse;
+Entities.Events = Events;
+
+export declare namespace Entities {
+  export {
+    type EntityData as EntityData,
+    type EntityWithSegments as EntityWithSegments,
+    type EntityWithSegmentsArray as EntityWithSegmentsArray,
+    type EntityCreateResponse as EntityCreateResponse,
+    type EntityRetrieveResponse as EntityRetrieveResponse,
+    type EntityListResponse as EntityListResponse,
+    type EntityCreateParams as EntityCreateParams,
+  };
+
+  export { Events as Events, type EventListResponse as EventListResponse };
 }
