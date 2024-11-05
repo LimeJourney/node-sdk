@@ -1,10 +1,30 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Errors from './error';
-import * as Uploads from './uploads';
 import { type Agent } from './_shims/index';
 import * as Core from './core';
+import * as Errors from './error';
+import * as Uploads from './uploads';
 import * as API from './resources/index';
+import {
+  Entities,
+  EntityCreateParams,
+  EntityCreateResponse,
+  EntityData,
+  EntityListResponse,
+  EntityRetrieveResponse,
+  EntityWithSegments,
+  EntityWithSegmentsArray,
+} from './resources/entities/entities';
+import {
+  EventCreateParams,
+  EventCreateResponse,
+  EventData,
+  EventDataArray,
+  EventListParams,
+  EventListResponse,
+  Events,
+  StringArray,
+} from './resources/events/events';
 
 export interface ClientOptions {
   /**
@@ -133,7 +153,7 @@ export class Limejourney extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
+export {
   LimejourneyError,
   APIError,
   APIConnectionError,
@@ -147,31 +167,38 @@ export const {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} = Errors;
+} from './error';
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace Limejourney {
-  export import RequestOptions = Core.RequestOptions;
+Limejourney.Events = Events;
+Limejourney.Entities = Entities;
 
-  export import Events = API.Events;
-  export import EventData = API.EventData;
-  export import EventDataArray = API.EventDataArray;
-  export import StringArray = API.StringArray;
-  export import EventCreateResponse = API.EventCreateResponse;
-  export import EventListResponse = API.EventListResponse;
-  export import EventCreateParams = API.EventCreateParams;
-  export import EventListParams = API.EventListParams;
+export declare namespace Limejourney {
+  export type RequestOptions = Core.RequestOptions;
 
-  export import Entities = API.Entities;
-  export import EntityData = API.EntityData;
-  export import EntityWithSegments = API.EntityWithSegments;
-  export import EntityWithSegmentsArray = API.EntityWithSegmentsArray;
-  export import EntityCreateResponse = API.EntityCreateResponse;
-  export import EntityRetrieveResponse = API.EntityRetrieveResponse;
-  export import EntityListResponse = API.EntityListResponse;
-  export import EntityCreateParams = API.EntityCreateParams;
+  export {
+    Events as Events,
+    type EventData as EventData,
+    type EventDataArray as EventDataArray,
+    type StringArray as StringArray,
+    type EventCreateResponse as EventCreateResponse,
+    type EventListResponse as EventListResponse,
+    type EventCreateParams as EventCreateParams,
+    type EventListParams as EventListParams,
+  };
+
+  export {
+    Entities as Entities,
+    type EntityData as EntityData,
+    type EntityWithSegments as EntityWithSegments,
+    type EntityWithSegmentsArray as EntityWithSegmentsArray,
+    type EntityCreateResponse as EntityCreateResponse,
+    type EntityRetrieveResponse as EntityRetrieveResponse,
+    type EntityListResponse as EntityListResponse,
+    type EntityCreateParams as EntityCreateParams,
+  };
 }
 
 export default Limejourney;
