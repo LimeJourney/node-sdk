@@ -22,7 +22,9 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Limejourney from 'limejourney';
 
-const client = new Limejourney();
+const client = new Limejourney({
+  apiKey: 'YOUR_API_KEY'
+});
 
 async function main() {
   const event = await client.events.create({
