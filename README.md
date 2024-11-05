@@ -45,7 +45,9 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Limejourney from 'limejourney';
 
-const client = new Limejourney();
+const client = new Limejourney({
+  xAPIKey: 'My X API Key',
+});
 
 async function main() {
   const params: Limejourney.EventCreateParams = {
@@ -112,7 +114,6 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const client = new Limejourney({
   maxRetries: 0, // default is 2
-  apiKey: 'My API Key',
 });
 
 // Or, configure per-request:
@@ -130,7 +131,6 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const client = new Limejourney({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
-  apiKey: 'My API Key',
 });
 
 // Override per-request:
@@ -266,7 +266,6 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 // Configure the default for all requests:
 const client = new Limejourney({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
-  apiKey: 'My API Key',
 });
 
 // Override per-request:
