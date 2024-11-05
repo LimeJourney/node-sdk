@@ -3,7 +3,10 @@
 import Limejourney from 'limejourney';
 import { Response } from 'node-fetch';
 
-const client = new Limejourney({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const client = new Limejourney({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource events', () => {
   test('list', async () => {
