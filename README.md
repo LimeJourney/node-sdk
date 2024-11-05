@@ -23,7 +23,7 @@ The full API of this library can be found in [api.md](api.md).
 import Limejourney from 'limejourney';
 
 const client = new Limejourney({
-  xAPIKey: 'My X API Key',
+  apiKey: 'My API Key',
 });
 
 async function main() {
@@ -46,7 +46,7 @@ This library includes TypeScript definitions for all request params and response
 import Limejourney from 'limejourney';
 
 const client = new Limejourney({
-  xAPIKey: 'My X API Key',
+  apiKey: 'My API Key',
 });
 
 async function main() {

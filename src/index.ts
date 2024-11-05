@@ -27,7 +27,7 @@ import {
 } from './resources/events/events';
 
 export interface ClientOptions {
-  xAPIKey: string;
+  apiKey: string;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -90,14 +90,14 @@ export interface ClientOptions {
  * API Client for interfacing with the Limejourney API.
  */
 export class Limejourney extends Core.APIClient {
-  xAPIKey: string;
+  apiKey: string;
 
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Limejourney API.
    *
-   * @param {string} opts.xAPIKey
+   * @param {string} opts.apiKey
    * @param {string} [opts.baseURL=process.env['LIMEJOURNEY_BASE_URL'] ?? /] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -106,15 +106,15 @@ export class Limejourney extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('LIMEJOURNEY_BASE_URL'), xAPIKey, ...opts }: ClientOptions) {
-    if (xAPIKey === undefined) {
+  constructor({ baseURL = Core.readEnv('LIMEJOURNEY_BASE_URL'), apiKey, ...opts }: ClientOptions) {
+    if (apiKey === undefined) {
       throw new Errors.LimejourneyError(
-        "Missing required client option xAPIKey; you need to instantiate the Limejourney client with an xAPIKey option, like new Limejourney({ xAPIKey: 'My X API Key' }).",
+        "Missing required client option apiKey; you need to instantiate the Limejourney client with an apiKey option, like new Limejourney({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
-      xAPIKey,
+      apiKey,
       ...opts,
       baseURL: baseURL || `/`,
     };
@@ -129,7 +129,7 @@ export class Limejourney extends Core.APIClient {
 
     this._options = options;
 
-    this.xAPIKey = xAPIKey;
+    this.apiKey = apiKey;
   }
 
   events: API.Events = new API.Events(this);
@@ -147,7 +147,7 @@ export class Limejourney extends Core.APIClient {
   }
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
-    return { 'x-api-key': this.xAPIKey };
+    return { 'x-api-key': this.apiKey };
   }
 
   static Limejourney = this;
