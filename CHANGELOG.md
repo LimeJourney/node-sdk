@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.1 (2024-11-05)
+
+Full Changelog: [v0.0.1-alpha.1...v0.1.0-alpha.1](https://github.com/LimeJourney/node-sdk/compare/v0.0.1-alpha.1...v0.1.0-alpha.1)
+
+### Features
+
+* **api:** update via SDK Studio ([#5](https://github.com/LimeJourney/node-sdk/issues/5)) ([402b09c](https://github.com/LimeJourney/node-sdk/commit/402b09c4c751ca78825e0c1490483fc1e2045db3))
+
 ## 0.0.1-alpha.1 (2024-10-29)
 
 Full Changelog: [v0.0.1-alpha.0...v0.0.1-alpha.1](https://github.com/LimeJourney/node-sdk/compare/v0.0.1-alpha.0...v0.0.1-alpha.1)
