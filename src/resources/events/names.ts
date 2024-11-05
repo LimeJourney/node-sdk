@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as NamesAPI from './names';
 import * as EventsAPI from './events';
 
 export class Names extends APIResource {
@@ -13,6 +12,6 @@ export class Names extends APIResource {
 
 export type NameListResponse = EventsAPI.StringArray | unknown;
 
-export namespace Names {
-  export import NameListResponse = NamesAPI.NameListResponse;
+export declare namespace Names {
+  export { type NameListResponse as NameListResponse };
 }

@@ -3,8 +3,8 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
-import * as EventsAPI from './events';
 import * as NamesAPI from './names';
+import { NameListResponse, Names } from './names';
 
 export class Events extends APIResource {
   names: NamesAPI.Names = new NamesAPI.Names(this._client);
@@ -115,14 +115,18 @@ export interface EventListParams {
   offset?: number;
 }
 
-export namespace Events {
-  export import EventData = EventsAPI.EventData;
-  export import EventDataArray = EventsAPI.EventDataArray;
-  export import StringArray = EventsAPI.StringArray;
-  export import EventCreateResponse = EventsAPI.EventCreateResponse;
-  export import EventListResponse = EventsAPI.EventListResponse;
-  export import EventCreateParams = EventsAPI.EventCreateParams;
-  export import EventListParams = EventsAPI.EventListParams;
-  export import Names = NamesAPI.Names;
-  export import NameListResponse = NamesAPI.NameListResponse;
+Events.Names = Names;
+
+export declare namespace Events {
+  export {
+    type EventData as EventData,
+    type EventDataArray as EventDataArray,
+    type StringArray as StringArray,
+    type EventCreateResponse as EventCreateResponse,
+    type EventListResponse as EventListResponse,
+    type EventCreateParams as EventCreateParams,
+    type EventListParams as EventListParams,
+  };
+
+  export { Names as Names, type NameListResponse as NameListResponse };
 }
