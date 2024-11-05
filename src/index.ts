@@ -27,6 +27,8 @@ import {
 } from './resources/events/events';
 
 export interface ClientOptions {
+  apiKey: string;
+
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
@@ -88,11 +90,14 @@ export interface ClientOptions {
  * API Client for interfacing with the Limejourney API.
  */
 export class Limejourney extends Core.APIClient {
+  apiKey: string;
+
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Limejourney API.
    *
+   * @param {string} opts.apiKey
    * @param {string} [opts.baseURL=process.env['LIMEJOURNEY_BASE_URL'] ?? /] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -101,8 +106,15 @@ export class Limejourney extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('LIMEJOURNEY_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({ baseURL = Core.readEnv('LIMEJOURNEY_BASE_URL'), apiKey, ...opts }: ClientOptions) {
+    if (apiKey === undefined) {
+      throw new Errors.LimejourneyError(
+        "Missing required client option apiKey; you need to instantiate the Limejourney client with an apiKey option, like new Limejourney({ apiKey: 'My API Key' }).",
+      );
+    }
+
     const options: ClientOptions = {
+      apiKey,
       ...opts,
       baseURL: baseURL || `/`,
     };
@@ -116,6 +128,8 @@ export class Limejourney extends Core.APIClient {
     });
 
     this._options = options;
+
+    this.apiKey = apiKey;
   }
 
   events: API.Events = new API.Events(this);
