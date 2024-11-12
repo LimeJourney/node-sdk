@@ -171,28 +171,8 @@ export class Limejourney extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export {
-  LimejourneyError,
-  APIError,
-  APIConnectionError,
-  APIConnectionTimeoutError,
-  APIUserAbortError,
-  NotFoundError,
-  ConflictError,
-  RateLimitError,
-  BadRequestError,
-  AuthenticationError,
-  InternalServerError,
-  PermissionDeniedError,
-  UnprocessableEntityError,
-} from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
 Limejourney.Events = Events;
 Limejourney.Entities = Entities;
-
 export declare namespace Limejourney {
   export type RequestOptions = Core.RequestOptions;
 
@@ -218,5 +198,22 @@ export declare namespace Limejourney {
     type EntityCreateParams as EntityCreateParams,
   };
 }
+
+export { toFile, fileFromPath } from 'limejourney/uploads';
+export {
+  LimejourneyError,
+  APIError,
+  APIConnectionError,
+  APIConnectionTimeoutError,
+  APIUserAbortError,
+  NotFoundError,
+  ConflictError,
+  RateLimitError,
+  BadRequestError,
+  AuthenticationError,
+  InternalServerError,
+  PermissionDeniedError,
+  UnprocessableEntityError,
+} from 'limejourney/error';
 
 export default Limejourney;
