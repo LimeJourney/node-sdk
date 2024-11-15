@@ -199,7 +199,7 @@ export declare namespace Limejourney {
   };
 }
 
-export { toFile, fileFromPath } from 'limejourney/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   LimejourneyError,
   APIError,
@@ -214,6 +214,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from 'limejourney/error';
+} from './error';
 
 export default Limejourney;
